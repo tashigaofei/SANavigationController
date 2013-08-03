@@ -1,7 +1,5 @@
 //
 //  NavigationController.h
-//  t
-//
 //  Created by tashigaofei on 13-7-30.
 //  Copyright (c) 2013年 tashigaofei . All rights reserved.
 //
@@ -14,8 +12,8 @@
 @property (nonatomic, assign) CGFloat animationDuration;
 @property (nonatomic, assign) CGFloat spot;
 
-- (void)pushScaleViewController:(UIViewController *)viewController animated:(BOOL)animated;
-- (UIViewController *)popScaledViewControllerAnimated:(BOOL)animated;
+- (void)pushScaleAnimationViewController:(UIViewController *)viewController;
+- (UIViewController *)popScaledAnimatedViewController;
 
 @end
 

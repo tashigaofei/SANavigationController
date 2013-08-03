@@ -1,7 +1,6 @@
 //
 //  NavigationController.m
-//  t
-//
+
 //  Created by tashigaofei on 13-7-30.
 //  Copyright (c) 2013年 tashigaofei . All rights reserved.
 //
@@ -39,7 +38,7 @@
     self.spot = self.spot == 0 ? 150 : self.spot;
 }
 
-- (void)pushScaleViewController:(UIViewController *)viewController animated:(BOOL)animated;
+- (void)pushScaleAnimationViewController:(UIViewController *)viewController;
 {
     
     [CATransaction begin];
@@ -55,19 +54,19 @@
     transformAnimation.fillMode = kCAFillModeForwards;
     _animationView.layer.transform = [transformAnimation.fromValue CATransform3DValue];
     [_animationView.layer addAnimation:transformAnimation forKey:@"transformAnimation"];
-    [super pushViewController:viewController animated:animated];
+    [super pushViewController:viewController animated:NO];
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
     animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(_animationView.center.x+ScreenWidth, _animationView.center.y)];
     animation.toValue = [NSValue valueWithCGPoint:_animationView.center];
     animation.duration = self.animationDuration;
     animation.fillMode = kCAFillModeBackwards;
     self.view.layer.position = _animationView.center;
-    [self.view.layer addAnimation:animation forKey:@"RotateAnimation"];
+    [self.view.layer addAnimation:animation forKey:@"positionAnimation"];
     [CATransaction commit];
     
 }
 
-- (UIViewController *)popScaledViewControllerAnimated:(BOOL)animated;
+- (UIViewController *)popScaledAnimatedViewController;
 {
     
     [CATransaction begin];
@@ -82,7 +81,7 @@
     animation.duration = 0.3;
     animation.fillMode = kCAFillModeBackwards;
     _animationView.layer.position = CGPointMake(self.view.center.x+ScreenWidth, self.view.center.y);
-    [_animationView.layer addAnimation:animation forKey:@"RotateAnimation"];
+    [_animationView.layer addAnimation:animation forKey:@"positionAnimation"];
     CABasicAnimation *transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     transformAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(self.underViewScale, self.underViewScale, 1.0)];
     transformAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];

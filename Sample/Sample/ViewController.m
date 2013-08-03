@@ -36,13 +36,13 @@
     dissmissButton.frame = CGRectMake(60, 10, 200, 44);
     [dissmissButton addTarget:self action:@selector(dismissAction:) forControlEvents:UIControlEventTouchUpInside];
     [vc.view addSubview:dissmissButton];
-    [self.scaledNavigationController pushScaleViewController:vc animated:YES];
+    [self.scaledNavigationController pushScaleAnimationViewController:vc];
     
 }
 
 -(void) dismissAction:(UIButton*) sender
 {
-    [self.scaledNavigationController popScaledViewControllerAnimated:YES];
+    [self.scaledNavigationController popScaledAnimatedViewController];
 }
 
 
